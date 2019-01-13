@@ -1,0 +1,48 @@
+Dokumentaatio tietokantaani:
+
+TIETOKANNAN RAKENNE JA TALLENNUSMUOTO:
+Toteutin harjoitustyönä kirjatietokannan. Tietokanta on toteutettu kokonaan tekstitiedostoksi, eli 
+vaikka ohjelman sulkisi ja avaisi uudelleen niin tietokanta ei häviä mihinkään vaan säilyy tekstitiedostona. Luonnollisesti käyttäjällä voi olla myös monta tietokantaa, esimerkiksi "dekkarit" ja "populaaritiede" voivat kaikki olla omia tietokantojaan.
+
+Kirjatietokannassa tallennetaan jokaiselle kirjalle kirjailija, kirjoitusvuosi ja arvosana. 
+
+Tietokanta kommunikoi käyttäjän kanssa konsolissa.
+
+TIETOKANNAN FUNKTIOT:
+Tietokannassa on seuraavat funktiot:
+0) start(), joka käynnistää tietokannan ja kutsuu käyttäjän syötteen mukaan seuraavia funktioita:
+1) uusiKirja(), jossa käyttäjä lisää uuden kirjan
+2) poistaKirja(), jossa käyttäjä poistaa jonkin kirjan
+3) muutaTietoja(), jossa käyttäjä muuttaa jonkin kirjan yhden tiedon
+4) listaaKirjat(), jossa käyttäjä listaa tietokantansa kirjojen tiedot kirjailijan mukaan aakkosjärjestyksessä siten, että myös kirjailijan kirjat ovat aakkosjärjestyksessä
+5) haeKirjailijanKirjat(), joka hakee kirjailijan kirjat tietokannasta
+6) kirjoitaSiistiTiedosto(), joka kirjoittaa käyttäjälle ulos siistin tietokantatekstitiedoston, käyttäjän pitää syöttää tietokantatiedoston nimi ja haluamansa siistin tiedoston nimen
+
+TIETOKANNAN FUNKTIOIDEN KÄYTTÖVAATIMUS:
+Jokaisen funktion ajon alussa käyttäjältä kysytään tiedostoa, johon hän haluaa tehdä muutoksia, joten käyttäjän on tiedettävä, missä tekstitiedostossa hänen kirjansa on ja missä kansiossa tekstitiedosto sijaitsee.
+
+TETOKANNAN VIRHEILMOITUKSET:
+Kirjatietokanta hyväksyy uusiksi kirjoiksi vain sellaiset kirjailijan kirjat, joilla on eri nimi. Jos käyttäjä haluaa antaa samalle kirjailijalle kaksi samannimistä kirjaa, niin ohjelma huomauttaa tästä. 
+
+Ohjelma myös huomauttaa, jos käyttäjä yrittää poistaa, muuttaa tai hakea sellaista kirjaa, jota ei ole tietokannassa (eli ei löydy sopivaa kirja-kirjailija-yhdistelmää). Samoin jos käyttäjä yrittää poistaa, muuttaa tai hakea kirjaa tiedostosta, jollaista ei ole olemassa, niin ohjelma antaa virheviestin.
+
+TIETOKANNASSA HYÖDYNNETYT KIRJASTOT:
+Tietokanta käyttää kahta kirjastoa: json ja os. Json-kirjasto lukee tietokannan tiedostoon ja tekee tekstitiedostosta tietokannan, sen käyttö on perusteltua koska saman asian ohjelmointi "käsin" olisi ollut melko työlästä, erityisesti tekstitiedoston lukeminen tekstitietokannaksi. Os-kirjastoa hyödynnetään tiedoston olemassaolon tarkastamisessa.
+
+TIETOKANNAN HEIKKOUDET:
+Tietokantaa kirjoittaessa tuli välillä toistettua aika samanlaisia koodirakenteita, ohjelmasta olisi saanut lyhyemmän pilkkomalla ehkä enemmän toiminnallisuuksia omiksi funktioikseen. Tällä hetkellä tietokannassa on kaksi avustavaa funktiota eli PaivitaTiedosto() joka kirjoittaa käyttäjän tekemät muutokset tekstitiedostoon, jota käyttäjä säilyttää. Toinen on ListaaKirjatSisaKayttoon(tiedosto), joka listaa kirjoja tietokannasta, minkä on tarkoitus auttaa, kun käyttäjä haluaa tehdä muutoksia tietokantaan.
+
+Tietokannan rakenne on ehkä hieman epäintuitiivinen, kun tietokantaa säilytetään omassa tekstitiedostossaan, joka ei ole kauhean kaunista luettavaa, ja käyttäjän on erikseen kirjoitettava tästä "rumasta" tekstitiedostosta itselleen "siisti" versio.
+
+Moni funktio myös listaa kaikki käyttäjän kirjat suoraan konsoliin, mikä on kätevää kun kirjoja on vähän, mutta pitkän kirjatietokannan kanssa tämä listausfunktio on epäkäytännöllinen.
+
+Tietokannan saa sekaisin, jos muuttaa kirjan nimeä sellaiseksi, joka kirjan kirjoittaneen kirjailijan kirjoissa jo on. Tällöin tietokanta ei osaa enää jatkossa erotella kirjoja toisistaan, vaikka niiden muut parametrit eroaisivatkin toisistaan. 
+
+Huomasin myös juuri ennen palautusta unohtaneeni tehdä tietokantaan tarkastukset sen varalta, että käyttäjä syöttää tyhjän rivin tietokantaan tai antaa kirjoitettavaksi tekstitiedostoksi tyhjän rivin (silloin ohjelma kaatuu). Varmasti erilaisia luettelemattomiani tarkastuksia jäi myös tekemättä.
+
+LAAJENNUSIDEAT:
+Tietokantaan voitaisiin toteuttaa "Lempikirjailijat"-listan, joka antaisi käyttäjän TOP 5 lempikirjailijat laskemalla kirjailijoiden kirjojen arvosanojen keskiarvot. 
+
+
+
+
